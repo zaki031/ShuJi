@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  
+
+  <title>Countdown Timer</title>
+</head>
+<body>
+
+  <img src="./assets//1.gif" alt="gif">
+
+<div class="countdownContainer">
+  <div class="addcontainer">
+      <button onclick="addMin()" id="rem">+5min</button>
+     <button onclick="remMin()" id="plus">-5min</button>
+  </div>
+ 
+
+
+    <p id="countdown">25:00</p>
+    <div class="btnContainer">
+        <button onclick="stopstart()" id="start">Start</button>
+        <button onclick="pause()" id="pause">Pause</button>
+    </div>
+
+  
+</div>
+
+
+
+
+<script src="./script.js">
+</script>
+
+<!-- <audio autoplay loop>
+  <source src="./assets/sound.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio> -->
+
+
+</body>
+</html>

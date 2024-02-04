@@ -1,0 +1,108 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    filter: blur(1px);
+}
+
+body{
+    overflow-y: hidden;
+    font-family: 'Press Start 2P', system-ui;
+}
+
+.countdownContainer{
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.countdownContainer p{
+    font-size: 6rem;
+    color: #fff;
+    border: #000000;
+    -webkit-text-stroke: 1px #000; 
+    text-stroke: 1px #000;
+}
+.btnContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.countdownContainer button{
+    font-family: 'Press Start 2P', system-ui;
+    height: 50px; 
+    color: #fff;
+    -webkit-text-stroke: 1px #000; 
+    text-stroke: 1px #000;
+    width: 100%;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+    border-radius: 6px;
+    font-size: 1.4rem;
+    box-shadow: 1px 1px 1px #000000;
+    transition: box-shadow 0.3s ease;
+
+}
+
+.countdownContainer button:focus{
+    box-shadow: 0px 0px 0px #000000;
+
+
+}
+
+.addcontainer{
+    display: flex;
+    position: absolute;
+    gap: 10px;
+    right: 0;
+    top: -60px;
+}
+#rem,
+#plus{
+
+    width: 100%;
+    height: 40px;
+    padding-left: 5px; padding-right: 5px;
+    font-size: 16px;
+    text-align: center;
+   
+}
+
+@media screen and (max-width: 500px) {
+    *{
+        
+    }
+    .countdownContainer p{
+        margin: 10px;
+        font-size: 4.5rem;
+    }
+    .btnContainer{
+        justify-content: space-evenly;
+    }
+    .countdownContainer button{
+        width: 100%;
+        height: 30px;
+        font-size: 1rem;
+    }
+    #rem,
+    #plus{
+        width: 75px;
+        height: 30px;
+        padding-left: 5px; padding-right: 5px;
+        font-size: 12px;
+    }
+  }

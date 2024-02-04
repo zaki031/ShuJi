@@ -85,6 +85,7 @@ function pause() {
 
 
 function startStreaming() {
+    console.log("h")
     const audioUrl = './assets/sound.mp3';
 
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -106,6 +107,9 @@ function startStreaming() {
     });
 }
 
+
 window.onload = function () {
-    startStreaming();
+    const hiddenButton = document.getElementById('hiddenButton');
+    hiddenButton.click(); 
 };
+

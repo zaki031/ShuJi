@@ -87,11 +87,8 @@ function pause() {
 
 function startStreaming() {
     if(fstarted==0){
-        console.log("h")
         const audioUrl = './assets/sound.mp3';
-
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
         const audioElement = new Audio();
         audioElement.src = audioUrl;
         audioElement.loop = true;

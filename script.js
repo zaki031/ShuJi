@@ -5,6 +5,7 @@ let timeRemaining;
 let pausedTimeRemaining;
 let x=25;
 let started;
+let fstarted = false;
 
 function start(targetDate){
     targetDate = new Date().getTime() + x * 60 * 1000;
@@ -19,7 +20,6 @@ function start(targetDate){
         const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
         document.getElementById("countdown").innerHTML = `${minutes}:${seconds}`;
-        console.log(minutes, seconds)
         if (timeRemaining <= 0) {
             clearInterval(countdownInterval);
             document.getElementById("countdown").innerHTML = "Your Session Has Ended!";
@@ -55,7 +55,6 @@ function stopstart(){
         start(x);
         document.getElementById("start").textContent = "Stop";
     }
-    document.getElementById("start").textContent.button.blur();
 
 }
 
@@ -92,11 +91,21 @@ function startStreaming() {
 
     const audioElement = new Audio();
     audioElement.src = audioUrl;
-    audioElement.loop = true; 
+    audioElement.loop = true;
 
     const source = audioContext.createMediaElementSource(audioElement);
     source.connect(audioContext.destination);
-    audioElement.play();
+
+    audioElement.addEventListener('canplaythrough', function () {
+        audioElement.play();
+        audioElement.removeEventListener('canplaythrough', arguments.callee);
+    });
+
+    audioElement.play().catch(function(error) {
+        console.error('Autoplay blocked:', error);
+    });
 }
 
-window.onload = startStreaming;
+window.onload = function () {
+    startStreaming();
+};

@@ -9,7 +9,6 @@ let fstarted = false;
 
 function start(targetDate){
     targetDate = new Date().getTime() + x * 60 * 1000;
-
     started = true;
     if(started){
     }
@@ -106,10 +105,4 @@ function startStreaming() {
         console.error('Autoplay blocked:', error);
     });
 }
-
-
-window.onload = function () {
-    const hiddenButton = document.getElementById('hiddenButton');
-    hiddenButton.click(); 
-};
 

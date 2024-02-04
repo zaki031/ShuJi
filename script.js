@@ -5,11 +5,13 @@ let timeRemaining;
 let pausedTimeRemaining;
 let x=25;
 let started;
-let fstarted = false;
+let fstarted = 0;
 
 function start(targetDate){
-    targetDate = new Date().getTime() + x * 60 * 1000;
     started = true;
+    fstarted+=1;
+
+    targetDate = new Date().getTime() + x * 60 * 1000;
     if(started){
     }
     countdownInterval = setInterval(updateCountdown, 1000);
@@ -84,25 +86,27 @@ function pause() {
 
 
 function startStreaming() {
-    console.log("h")
-    const audioUrl = './assets/sound.mp3';
+    if(fstarted==0){
+        console.log("h")
+        const audioUrl = './assets/sound.mp3';
 
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-    const audioElement = new Audio();
-    audioElement.src = audioUrl;
-    audioElement.loop = true;
+        const audioElement = new Audio();
+        audioElement.src = audioUrl;
+        audioElement.loop = true;
 
-    const source = audioContext.createMediaElementSource(audioElement);
-    source.connect(audioContext.destination);
+        const source = audioContext.createMediaElementSource(audioElement);
+        source.connect(audioContext.destination);
 
-    audioElement.addEventListener('canplaythrough', function () {
-        audioElement.play();
-        audioElement.removeEventListener('canplaythrough', arguments.callee);
-    });
+        audioElement.addEventListener('canplaythrough', function () {
+            audioElement.play();
+            audioElement.removeEventListener('canplaythrough', arguments.callee);
+        });
 
-    audioElement.play().catch(function(error) {
-        console.error('Autoplay blocked:', error);
-    });
+        audioElement.play().catch(function(error) {
+            console.error('Autoplay blocked:', error);
+        });
+    }
 }
 

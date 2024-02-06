@@ -1,8 +1,10 @@
 
 let isPaused = false;
-let timeRemaining,countdownInterval,pausedTimeRemaining,started;
+let timeRemaining,countdownInterval,pausedTimeRemaining,started,muted;
+const audioElement = new Audio();
 let x=25;
 let fstarted = 0;
+var click = document.getElementById('click');
 
 function start(targetDate){
     started = true;
@@ -25,6 +27,8 @@ function start(targetDate){
 }
 
 function addMin(){
+    click.currentTime = 0; 
+    click.play();
     if(!started){
         if(x<60){
             x+=5;
@@ -33,18 +37,23 @@ function addMin(){
     }
 }
 function remMin(){
+    click.currentTime = 0; 
+    click.play();
     if(!started){
         if(x>15){
             x-=5;
         }
         document.getElementById("countdown").innerHTML = `${x}:00`;
     }
+
 }
 
 
 
 
 function stopstart(){
+    click.currentTime = 0; 
+    click.play();
     if(started){
         stop();
         document.getElementById("start").textContent = "Start";
@@ -67,6 +76,8 @@ function stop(){
 }
 
 function pause() {
+    click.currentTime = 0; 
+    click.play();
     if(started){
     isPaused = !isPaused;
     if (isPaused) {
@@ -86,7 +97,6 @@ function startStreaming() {
     if(fstarted==0){
         const audioUrl = './assets/sound.mp3';
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const audioElement = new Audio();
         audioElement.src = audioUrl;
         audioElement.loop = true;
 
@@ -104,10 +114,27 @@ function startStreaming() {
     }
 }
 
+
+
+function pauseMusic(){
+    if(fstarted){
+          if(audioElement.paused){
+        muted = false
+        audioElement.play();
+    } else{
+        muted = true;
+        audioElement.pause();
+    }
+    }
+  
+}
 const todoList = document.getElementById("todo-list");
 const todoInput = document.getElementById("todo-input");
 
 function addTask() {
+        click.currentTime = 0; 
+click.play();
+
     const taskText = todoInput.value.trim();
     if (taskText === "") {
     alert("Please enter a task.");
@@ -126,9 +153,27 @@ function addTask() {
         todoList.appendChild(todoItem);
 
         todoInput.value = "";
+
     }
 
 function deleteTask(element) {
         const todoItem = element.parentElement;
         todoList.removeChild(todoItem);
     }
+
+
+const mute = document.getElementById("mute")
+    mute.addEventListener(click,function(){
+        console.log("ww")
+       
+    })
+
+
+function changeMuteIcon(){
+    if(!muted && fstarted){
+    mute.innerHTML= `
+    <img src="./assets/mute.png">`
+    } else{
+        mute.innerHTML = `<img src="./assets/music.png">`
+    }
+}

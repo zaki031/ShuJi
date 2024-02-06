@@ -33,10 +33,11 @@ body{
     font-size: 6rem;
     color: #fff;
     border: #000000;
-    -webkit-text-stroke: 1px #000; 
-    text-stroke: 1px #000;
+    -webkit-text-stroke: 2px #000; 
+    text-stroke: 2px #000;
 }
 .btnContainer{
+    padding: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -106,3 +107,53 @@ body{
         font-size: 12px;
     }
   }
+
+
+input{
+    font-family: 'Press Start 2P', system-ui;
+    border: 1px solid #ffffff;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width:  96.5%;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 6px;
+    color: white;
+    border-color: white;
+    padding-left: 15px;
+    font-size: 0.8rem;
+}
+input::placeholder {
+    color: #fff; 
+    -webkit-text-stroke: 0.5px #000; 
+    text-stroke: 0.5px #000;
+}
+
+
+
+#todo-list .todo-item{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    border: solid white 1px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.7rem;
+    padding-left: 10px; padding-right: 10px;
+    height: 30px;
+    align-items: center;
+    
+}
+.delete-btn{
+    filter: grayscale(90%);
+}
+
+#right{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+#todo-list input{
+    margin: 0;
+    width: 20px; height: 20px;
+}

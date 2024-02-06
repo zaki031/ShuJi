@@ -1,16 +1,12 @@
 
 let isPaused = false;
-let countdownInterval;
-let timeRemaining;
-let pausedTimeRemaining;
+let timeRemaining,countdownInterval,pausedTimeRemaining,started;
 let x=25;
-let started;
 let fstarted = 0;
 
 function start(targetDate){
     started = true;
     fstarted+=1;
-
     targetDate = new Date().getTime() + x * 60 * 1000;
     if(started){
     }
@@ -44,6 +40,7 @@ function remMin(){
         document.getElementById("countdown").innerHTML = `${x}:00`;
     }
 }
+
 
 
 
@@ -84,7 +81,7 @@ function pause() {
 }
 
 
-
+// streaming the audio
 function startStreaming() {
     if(fstarted==0){
         const audioUrl = './assets/sound.mp3';
@@ -107,3 +104,31 @@ function startStreaming() {
     }
 }
 
+const todoList = document.getElementById("todo-list");
+const todoInput = document.getElementById("todo-input");
+
+function addTask() {
+    const taskText = todoInput.value.trim();
+    if (taskText === "") {
+    alert("Please enter a task.");
+            return;
+    }
+
+    const todoItem = document.createElement("div");
+    todoItem.classList.add("todo-item");
+    todoItem.innerHTML = `
+        <div id="right">
+        <input type="checkbox" id="isDone" name="task" value="done">
+        <span>${taskText}</span>
+        </div>
+        <span class="delete-btn" onclick="deleteTask(this)">❌</span>
+    `;
+        todoList.appendChild(todoItem);
+
+        todoInput.value = "";
+    }
+
+function deleteTask(element) {
+        const todoItem = element.parentElement;
+        todoList.removeChild(todoItem);
+    }

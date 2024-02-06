@@ -25,6 +25,11 @@
         <button onclick=" startStreaming(); stopstart();" id="start">Start</button>
         <button onclick="pause()" id="pause">Pause</button>
     </div>
+    <form id="todo-form" onsubmit="addTask(); return false;">
+      <input type="text" id="todo-input" placeholder="Enter your task">
+      <button type="submit">Add Task</button>
+  </form>
+  <div id="todo-list"></div>
 
   
 </div>

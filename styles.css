@@ -180,8 +180,7 @@ input::placeholder {
 
 
 
-
-
+a,
 #mute{
     position: fixed;
     right: 20px;
@@ -196,6 +195,16 @@ input::placeholder {
     justify-content: center;
 
 }
+a{
+    left: 20px;
+    width: 100px;
+    height: 100px
+}
+#github{
+    width: 100%px;
+    height: 100px;
+   object-fit: contain;
+}
 #mute img{
 object-fit: cover;
    width: 100px;
@@ -203,3 +212,10 @@ object-fit: cover;
 }
 
  
+
+
+
+#end{
+    font-size: 2rem;
+    padding: 10px;
+}
